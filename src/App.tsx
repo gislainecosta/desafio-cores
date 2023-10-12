@@ -1,6 +1,6 @@
-import { GlobalStyle } from './globalStyle';
 import styled from 'styled-components';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { GlobalStyle } from './globalStyle';
 import Game from './pages/Game';
 import Home from './pages/Home';
 
@@ -11,7 +11,7 @@ const ContainerApp = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-`
+`;
 
 function App() {
   return (
@@ -19,13 +19,12 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path='/jogo' element={<Game />} />
-          <Route path='/' element={<Home />} />
-          <Route path='*' element={<Navigate to='/' />} />
+          <Route path="/jogo" element={<Game />} />
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
     </ContainerApp>
-
   );
 }
 
