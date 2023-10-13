@@ -1,4 +1,5 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
+import Background from './images/button.png';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -8,13 +9,14 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   :root{
-    --background: #eff1f0;
-    --text: #28334b;
+    --white: #eff1f0;
+    --dark-blue: #201454;
+    --violet: #511970;
   }
 
   body {
-    background-color: var(--background);
-    color: var(--text);
+    background-color: var(--white);
+    color: var(--dark-blue);
   }
 
   body, input, textarea, button {
@@ -23,6 +25,21 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     cursor: pointer;
+    background: url(${Background});
+    background-size: 100% 100%;
+    border: none;
+    color: var(--white);
+    padding: 1rem;
+    font-family: 'Finger Paint', sans-serif;
+    margin: 0.25rem auto;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
   }
 
   a {
@@ -60,4 +77,4 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 20px;
     border: 3px solid black;
   }
-`
+`;

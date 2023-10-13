@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { GlobalStyle } from './globalStyle';
 import Game from './pages/Game';
 import Home from './pages/Home';
+import { GameContextProvider } from './contexts/gameContext';
 
 const ContainerApp = styled.div`
   height: 100vh;
@@ -15,16 +16,18 @@ const ContainerApp = styled.div`
 
 function App() {
   return (
-    <ContainerApp>
-      <GlobalStyle />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/jogo" element={<Game />} />
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </BrowserRouter>
-    </ContainerApp>
+    <GameContextProvider>
+      <ContainerApp>
+        <GlobalStyle />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/jogo" element={<Game />} />
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </BrowserRouter>
+      </ContainerApp>
+    </GameContextProvider>
   );
 }
 

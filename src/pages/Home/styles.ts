@@ -11,6 +11,8 @@ export const HomeContainer = styled.div`
   > section {
     display: flex;
     flex-direction: column;
+    padding: 0 2rem;
+    align-items: center;
   }
 `;
 
@@ -21,7 +23,31 @@ export const Logo = styled.img`
 `;
 
 export const Name = styled.img`
-  width: 12rem;
+  width: 16rem;
   display: block;
-  margin: auto;
+`;
+
+export const Ranking = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 70%;
+  justify-content: start;
+
+  > p {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  > div {
+    margin-top: 1rem;
+    border: 1px solid red;
+    width: 80%;
+    padding: 1rem;
+  }
+`;
+
+export const Positions = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
