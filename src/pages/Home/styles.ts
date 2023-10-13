@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Background from '../../images/painting_easel.png';
 
 export const HomeContainer = styled.div`
   justify-content: space-around;
@@ -31,8 +32,14 @@ export const Ranking = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 70%;
+  height: 84%;
+  width: 90%;
   justify-content: start;
+  margin-left: 2rem;
+  background: url(${Background});
+  background-size: 100% 100%;
+  padding: 6rem 2rem 12rem 2rem !important;
+  font-family: 'Finger Paint', sans-serif;
 
   > p {
     font-weight: bold;
@@ -41,7 +48,6 @@ export const Ranking = styled.section`
 
   > div {
     margin-top: 1rem;
-    border: 1px solid red;
     width: 80%;
     padding: 1rem;
   }
