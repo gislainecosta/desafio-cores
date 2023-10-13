@@ -77,6 +77,7 @@ const initialState = {
   player: {
     highscore: 0,
     colors: [],
+    username: '',
   },
 };
 

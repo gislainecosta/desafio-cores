@@ -1,5 +1,10 @@
-//import * as St from './styles';
+import * as St from './styles';
 
 export default function Game() {
-  return <div>Game</div>;
+  return (
+    <St.Container>
+      <section>cores anteriores</section>
+      <section>jogo</section>
+    </St.Container>
+  );
 }

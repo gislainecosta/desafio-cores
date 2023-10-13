@@ -1,10 +1,12 @@
 import { useGame } from 'src/contexts/gameContext';
+import { useNavigate } from 'react-router-dom';
 import Name from '../../images/Name.png';
 import Logo from '../../images/Logo.png';
 import * as St from './styles';
 
 export default function Home() {
   const { store } = useGame();
+  const navigate = useNavigate();
 
   const ranking = store.ranking
     .sort((a, b) => {
@@ -23,11 +25,11 @@ export default function Home() {
     });
 
   return (
-    <St.HomeContainer>
+    <St.Container>
       <section>
         <St.Name src={Name} alt="Game name" />
-        <button onClick={() => console.log('Iniciar')}>Iniciar</button>
-        <button onClick={() => console.log('Tutorial')}>Tutorial</button>
+        <button onClick={() => navigate('/jogo')}>Iniciar</button>
+        <button onClick={() => navigate('/tutorial')}>Tutorial</button>
       </section>
       <St.Logo src={Logo} alt="Logo" />
       <St.Ranking>
@@ -35,6 +37,6 @@ export default function Home() {
         <p>Pontos</p>
         <div>{ranking}</div>
       </St.Ranking>
-    </St.HomeContainer>
+    </St.Container>
   );
 }
