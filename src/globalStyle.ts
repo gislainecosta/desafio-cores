@@ -65,16 +65,15 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar {
-    width: 12px;
+    width: 0.4rem;
   }
 
   ::-webkit-scrollbar-track {
-    background: transparent;
+    background: #5219701f;
   }
 
   ::-webkit-scrollbar-thumb {
     background-color: var(--violet);
     border-radius: 20px;
-    border: 3px solid black;
   }
 `;

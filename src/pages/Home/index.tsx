@@ -11,13 +11,15 @@ export default function Home() {
       return a.highscore > b.highscore ? -1 : a.highscore < b.highscore ? 1 : 0;
     })
     .map((player, index) => {
-      return (
-        <St.Positions key={index}>
-          <p>{index + 1}</p>
-          <p>{player.username}</p>
-          <p>{player.highscore}</p>
-        </St.Positions>
-      );
+      if (index < 10) {
+        return (
+          <St.Positions key={index}>
+            <p>{index + 1}</p>
+            <p>{player.username}</p>
+            <p>{player.highscore}</p>
+          </St.Positions>
+        );
+      }
     });
 
   return (
@@ -29,7 +31,8 @@ export default function Home() {
       </section>
       <St.Logo src={Logo} alt="Logo" />
       <St.Ranking>
-        <p>Ranking</p>
+        <p>HALL DA FAMA</p>
+        <p>Pontos</p>
         <div>{ranking}</div>
       </St.Ranking>
     </St.HomeContainer>

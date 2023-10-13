@@ -12,7 +12,6 @@ export const HomeContainer = styled.div`
   > section {
     display: flex;
     flex-direction: column;
-    padding: 0 2rem;
     align-items: center;
   }
 `;
@@ -26,34 +25,42 @@ export const Logo = styled.img`
 export const Name = styled.img`
   width: 16rem;
   display: block;
+  margin-bottom: 2rem;
 `;
 
 export const Ranking = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 84%;
-  width: 90%;
+  height: 85%;
   justify-content: start;
-  margin-left: 2rem;
   background: url(${Background});
   background-size: 100% 100%;
-  padding: 6rem 2rem 12rem 2rem !important;
+  padding: 24% 2rem;
   font-family: 'Finger Paint', sans-serif;
 
   > p {
     font-weight: bold;
-    font-size: 2rem;
+  }
+
+  > p:first-of-type {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+
+  > p:last-of-type {
+    font-size: 0.8rem;
+    text-align: right;
+    width: 78%;
   }
 
   > div {
-    margin-top: 1rem;
-    width: 80%;
-    padding: 1rem;
+    width: 78%;
   }
 `;
 
 export const Positions = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 92%;
 `;
