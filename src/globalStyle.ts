@@ -12,10 +12,10 @@ export const GlobalStyle = createGlobalStyle`
     --white: #eff1f0;
     --dark-blue: #201454;
     --violet: #511970;
+    --beige: #f2ecd6;
   }
 
   body {
-    background-color: var(--white);
     color: var(--dark-blue);
   }
 
@@ -69,7 +69,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: #5219701f;
+    background: #52197015;
   }
 
   ::-webkit-scrollbar-thumb {

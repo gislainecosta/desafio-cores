@@ -8,6 +8,7 @@ export const Container = styled.div`
   align-items: center;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  background-color: var(--white);
 
   > section {
     flex-grow: 1;
