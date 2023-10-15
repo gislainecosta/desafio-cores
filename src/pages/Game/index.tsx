@@ -5,28 +5,45 @@ import * as St from './styles';
 export default function Game() {
   const [correctColor, setCorrectColor] = useState<string>('');
   const [colors, setColors] = useState<string[]>([]);
+  const [generalTimer, setGeneralTimer] = useState<number>(30);
+  //const [partialTimer, setPartialTimer] = useState<number>(0);
+  const [score, setScore] = useState<number>(0);
+  //const [highScore, setHighScore] = useState<number>(0);
 
   const generateRandomColor = () => {
     const letters = '0123456789ABCDEF';
-    let color = '#';
+    const randomColors = [];
 
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
+    for (let i = 0; i < 3; i++) {
+      let color = '#';
 
-    return color;
-  };
-
-  useEffect(() => {
-    if (colors.length === 0) {
-      const randomColors = [];
-
-      for (let i = 0; i < 3; i++) {
-        randomColors.push(generateRandomColor());
+      for (let j = 0; j < 6; j++) {
+        color += letters[Math.floor(Math.random() * 16)];
       }
+
+      randomColors.push(color);
 
       setColors(randomColors);
       setCorrectColor(randomColors[Math.floor(Math.random() * 3)]);
+    }
+  };
+
+  useEffect(() => {
+    if (generalTimer > 0) {
+      const interval = setInterval(() => {
+        setGeneralTimer(generalTimer - 1);
+      }, 1000);
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [generalTimer]);
+
+  useEffect(() => {
+    if (colors.length === 0) {
+      generateRandomColor();
+      setGeneralTimer(30);
+      setScore(0);
     }
   }, [colors]);
 
@@ -46,11 +63,14 @@ export default function Game() {
         <St.Title>
           <St.Name src={Name} alt="Game name" />
         </St.Title>
-        <section>Timer</section>
+        <section>{generalTimer}</section>
         <section>
           <button onClick={() => setColors([])}>Restart</button>
         </section>
-        <section>Points</section>
+        <section>
+          <p>Pontuação máxima</p>
+          <p>Pontos {score}</p>
+        </section>
         <St.Color>{correctColor}</St.Color>
         <section>{colors[0]}</section>
         <section>{colors[1]}</section>
