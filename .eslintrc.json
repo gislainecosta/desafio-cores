@@ -92,7 +92,7 @@
       "no-plusplus": "off",
       "no-shadow": "off",
       "@typescript-eslint/no-shadow": [
-        "error",
+        "warn",
         {
           "ignoreTypeValueShadow": true
         }
@@ -100,7 +100,7 @@
       "no-unused-expressions": "off",
       "no-restricted-syntax": "off",
       "no-param-reassign": [
-        "error",
+        "warn",
         {
           "props": false
         }

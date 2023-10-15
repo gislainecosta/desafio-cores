@@ -1,6 +1,6 @@
 import { useGame } from 'src/contexts/gameContext';
 import { useNavigate } from 'react-router-dom';
-import Name from '../../images/Name.png';
+import Name from '../../images/name.png';
 import Logo from '../../images/Logo.png';
 import * as St from './styles';
 
