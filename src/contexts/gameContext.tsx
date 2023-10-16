@@ -27,7 +27,7 @@ interface IGameProviderProps {
 
 const reducers = (
   store: IGameStore,
-  action: { type: string; payload: any },
+  action: { type: string; payload?: any },
 ) => {
   const { type, payload } = action;
 

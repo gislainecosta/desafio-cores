@@ -1,14 +1,21 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useGame } from 'src/contexts/gameContext';
 import Name from '../../images/name2.png';
+import RestartImg from '../../images/restart.png';
+import Paint from '../../images/round.png';
+import Crono from '../../images/timer.png';
 import * as St from './styles';
 
 export default function Game() {
+  const navigate = useNavigate();
+  const { store } = useGame();
   const [correctColor, setCorrectColor] = useState<string>('');
   const [colors, setColors] = useState<string[]>([]);
   const [generalTimer, setGeneralTimer] = useState<number>(30);
   //const [partialTimer, setPartialTimer] = useState<number>(0);
   const [score, setScore] = useState<number>(0);
-  //const [highScore, setHighScore] = useState<number>(0);
+  const player = store.player;
 
   const generateRandomColor = () => {
     const letters = '0123456789ABCDEF';
@@ -28,6 +35,21 @@ export default function Game() {
     }
   };
 
+  const history = player.colors.map((color, index) => (
+    <article key={index}>
+      <p>{color.guessedColor}</p>
+      <p>{color.correctColor}</p>
+      <p>{color.time}</p>
+    </article>
+  ));
+
+  const clear = () => {
+    setColors([]);
+    setCorrectColor('');
+    setGeneralTimer(30);
+    setScore(0);
+  };
+
   useEffect(() => {
     if (generalTimer > 0) {
       const interval = setInterval(() => {
@@ -37,6 +59,8 @@ export default function Game() {
         clearInterval(interval);
       };
     }
+
+    if (generalTimer === 0) clear();
   }, [generalTimer]);
 
   useEffect(() => {
@@ -47,35 +71,70 @@ export default function Game() {
     }
   }, [colors]);
 
+  const checkAnswer = (answer: string) => {
+    if (answer === correctColor) {
+      setScore(score + 5);
+    } else {
+      setScore(score - 1 < 0 ? 0 : score - 1);
+    }
+    if (generalTimer !== 0) {
+      generateRandomColor();
+    }
+  };
+
   return (
     <St.Container>
       <St.ColorsHistory>
-        <h3>Histórico de rodadas</h3>
-        <section>
+        <h3>HISTÓRICO DE RODADAS</h3>
+        <div>
           <header>
             <p>Sua Resposta</p>
             <p>Resposta correta</p>
             <p>Tempo</p>
           </header>
-        </section>
+          <main>{history}</main>
+        </div>
       </St.ColorsHistory>
       <St.Game>
         <St.Title>
           <St.Name src={Name} alt="Game name" />
         </St.Title>
-        <section>{generalTimer}</section>
-        <section>
-          <button onClick={() => setColors([])}>Restart</button>
-        </section>
-        <section>
-          <p>Pontuação máxima</p>
-          <p>Pontos {score}</p>
-        </section>
-        <St.Color>{correctColor}</St.Color>
-        <section>{colors[0]}</section>
-        <section>{colors[1]}</section>
-        <section>{colors[2]}</section>
+        <St.CronoImg>
+          <img src={Crono} alt="cronômetro" />
+          <p>Tempo</p>
+          <p>{generalTimer}</p>
+        </St.CronoImg>
+        <St.Restart>
+          <img onClick={clear} src={RestartImg} alt="restart" />
+          <button onClick={clear}>Restart</button>
+        </St.Restart>
+        <St.Score>
+          <section>
+            <p>Máxima:</p>
+            <p>{player.highscore}</p>
+            <p>Atual:</p>
+            <p>{score}</p>
+          </section>
+          <p>Pontuação</p>
+        </St.Score>
+        <St.Color color={correctColor}>
+          <div
+            style={{
+              backgroundColor: `${correctColor}`,
+              borderRadius: '50% 50%',
+            }}
+          >
+            <img src={Paint} alt="paint" />
+          </div>
+        </St.Color>
+        <button onClick={() => checkAnswer(colors[0])}>{colors[0]}</button>
+        <button onClick={() => checkAnswer(colors[1])}>{colors[1]}</button>
+        <button onClick={() => checkAnswer(colors[2])}>{colors[2]}</button>
       </St.Game>
+      <div>
+        <button onClick={() => navigate('/')}>Voltar ao menu</button>
+        <button onClick={clear}>Limpar Dados</button>
+      </div>
     </St.Container>
   );
 }

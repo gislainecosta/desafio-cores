@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import Background from '../../images/painting_easel.png';
+import RankingBackground from '../../images/painting_easel.png';
+import ButtonBackground from '../../images/button.png';
 
 export const Container = styled.div`
   justify-content: space-around;
@@ -8,13 +9,19 @@ export const Container = styled.div`
   align-items: center;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background-color: var(--white);
 
   > section {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  button {
+    font-family: 'Finger Paint', sans-serif;
+    background: url(${ButtonBackground});
+    background-size: 100% 100%;
+    color: var(--white);
   }
 `;
 
@@ -36,7 +43,7 @@ export const Ranking = styled.section`
   align-items: center;
   height: 85%;
   justify-content: start;
-  background: url(${Background});
+  background: url(${RankingBackground});
   background-size: 100% 100%;
   padding: 24% 2rem;
   font-family: 'Finger Paint', sans-serif;
@@ -61,7 +68,7 @@ export const Ranking = styled.section`
   }
 `;
 
-export const Positions = styled.div`
+export const Positions = styled.article`
   display: flex;
   justify-content: space-between;
   width: 92%;

@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import Background from './images/button.png';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -10,13 +9,14 @@ export const GlobalStyle = createGlobalStyle`
 
   :root{
     --white: #eff1f0;
-    --dark-blue: #201454;
+    --blue: #201454;
     --violet: #511970;
-    --beige: #f2ecd6;
+    --dark-blue: #1c1f30;
   }
 
   body {
-    color: var(--dark-blue);
+    color: var(--blue);
+    background-color: var(--white);
   }
 
   body, input, textarea, button {
@@ -25,12 +25,8 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     cursor: pointer;
-    background: url(${Background});
-    background-size: 100% 100%;
     border: none;
-    color: var(--white);
     padding: 1rem;
-    font-family: 'Finger Paint', sans-serif;
     margin: 0.25rem auto;
 
     &:hover {
@@ -69,11 +65,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: #52197015;
+    background: #1c1f3011;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: var(--violet);
+    background-color: var(--dark-blue);
     border-radius: 20px;
   }
 `;
