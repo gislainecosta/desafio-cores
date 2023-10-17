@@ -5,7 +5,6 @@ import Name from '../../images/name2.png';
 import RestartImg from '../../images/restart.png';
 import Clear from '../../images/clear.png';
 import Paint from '../../images/round.png';
-import Crono from '../../images/timer.png';
 import Back from '../../images/back.png';
 import History from '../../components/History';
 import * as St from './styles';
@@ -84,7 +83,7 @@ export default function Game() {
   return (
     <St.Container>
       <St.ColorsHistory>
-        <h3>HISTÓRICO DE RODADAS</h3>
+        <p>HISTÓRICO DE RODADAS</p>
         <header>
           <p>Sua Resposta</p>
           <p>Resposta correta</p>
@@ -97,13 +96,17 @@ export default function Game() {
           <St.Name src={Name} alt="Game name" />
         </St.Title>
         <St.CronoImg>
-          <img src={Crono} alt="cronômetro" />
+          <div>
+            <p>
+              {generalTimer < 10 && 0}
+              {generalTimer}
+            </p>
+          </div>
           <p>Tempo</p>
-          <p>{generalTimer}</p>
         </St.CronoImg>
         <St.Restart>
           <img onClick={clear} src={RestartImg} alt="restart" />
-          <button onClick={clear}>Restart</button>
+          <button onClick={clear}>Reiniciar</button>
         </St.Restart>
         <St.Score>
           <section>

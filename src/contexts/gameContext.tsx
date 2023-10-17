@@ -95,7 +95,7 @@ const initialState = {
       {
         time: 5,
         guessedColor: '#890e94',
-        correctColor: '#af5baf',
+        correctColor: '#160f3a',
       },
       {
         time: 10,
@@ -104,7 +104,107 @@ const initialState = {
       },
       {
         time: 20,
-        guessedColor: '#a5c05a',
+        guessedColor: '#fcfff3',
+        correctColor: '#38cc3f',
+      },
+      {
+        time: 3,
+        guessedColor: '#dbb6b6',
+        correctColor: '#dbb6b6',
+      },
+      {
+        time: 5,
+        guessedColor: '#890e94',
+        correctColor: '#160f3a',
+      },
+      {
+        time: 10,
+        guessedColor: '#24bda3',
+        correctColor: '#24bda3',
+      },
+      {
+        time: 20,
+        guessedColor: '#fcfff3',
+        correctColor: '#38cc3f',
+      },
+      {
+        time: 3,
+        guessedColor: '#dbb6b6',
+        correctColor: '#dbb6b6',
+      },
+      {
+        time: 5,
+        guessedColor: '#890e94',
+        correctColor: '#160f3a',
+      },
+      {
+        time: 10,
+        guessedColor: '#24bda3',
+        correctColor: '#24bda3',
+      },
+      {
+        time: 20,
+        guessedColor: '#fcfff3',
+        correctColor: '#38cc3f',
+      },
+      {
+        time: 3,
+        guessedColor: '#dbb6b6',
+        correctColor: '#dbb6b6',
+      },
+      {
+        time: 5,
+        guessedColor: '#890e94',
+        correctColor: '#160f3a',
+      },
+      {
+        time: 10,
+        guessedColor: '#24bda3',
+        correctColor: '#24bda3',
+      },
+      {
+        time: 20,
+        guessedColor: '#fcfff3',
+        correctColor: '#38cc3f',
+      },
+      {
+        time: 3,
+        guessedColor: '#dbb6b6',
+        correctColor: '#dbb6b6',
+      },
+      {
+        time: 5,
+        guessedColor: '#890e94',
+        correctColor: '#160f3a',
+      },
+      {
+        time: 10,
+        guessedColor: '#24bda3',
+        correctColor: '#24bda3',
+      },
+      {
+        time: 20,
+        guessedColor: '#fcfff3',
+        correctColor: '#38cc3f',
+      },
+      {
+        time: 3,
+        guessedColor: '#dbb6b6',
+        correctColor: '#dbb6b6',
+      },
+      {
+        time: 5,
+        guessedColor: '#890e94',
+        correctColor: '#160f3a',
+      },
+      {
+        time: 10,
+        guessedColor: '#24bda3',
+        correctColor: '#24bda3',
+      },
+      {
+        time: 20,
+        guessedColor: '#fcfff3',
         correctColor: '#38cc3f',
       },
     ],

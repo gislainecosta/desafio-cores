@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Crono from '../../images/timer.png';
 
 interface IStyleProps {
   background: string;
@@ -15,21 +16,35 @@ export const ColorsHistory = styled.div`
   width: 25%;
   text-align: center;
   padding: 1rem;
+  background-color: var(--dark-blue);
+  color: var(--white);
 
   > header {
+    font-weight: bold;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem 2rem;
+    gap: 0.5rem;
+    padding: 1rem;
     word-break: normal;
+    background-color: var(--white);
+    color: var(--dark-blue);
+    text-align: center;
+    margin: 1rem 0 0 0;
+    border-radius: 0.5rem 0.5rem 0 0;
   }
 
   > main {
     overflow-y: scroll;
     height: 90%;
-    padding: 1rem 2rem;
+    padding: 1.2rem 1rem 2rem 1rem;
+  }
+
+  > p {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.5rem;
   }
 `;
 
@@ -45,6 +60,8 @@ export const Game = styled.div`
     color: var(--white);
     font-weight: bold;
     border-radius: 1rem;
+    height: 4rem;
+    letter-spacing: 0.1rem;
   }
 `;
 
@@ -87,7 +104,7 @@ export const Score = styled.div`
     }
 
     P:last-of-type {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       text-align: right;
     }
   }
@@ -160,19 +177,21 @@ export const CronoImg = styled.section`
   color: var(--blue);
   position: relative;
 
-  img {
-    height: 6rem;
-    display: block;
-    margin: 0 auto;
-  }
-
-  p:last-of-type {
-    z-index: 1;
-    position: absolute;
+  div {
+    background: url(${Crono});
+    background-size: 100% 100%;
     color: var(--white);
-    top: 2.8rem;
-    left: 46%;
-    text-align: center;
+    height: 6rem;
+    width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0.4rem;
+    font-size: 2rem;
+
+    p {
+      color: var(--white);
+    }
   }
 `;
 

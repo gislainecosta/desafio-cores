@@ -65,11 +65,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: #1c1f3011;
+    background: #eff1f010;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: var(--dark-blue);
+    background-color: var(--white);
     border-radius: 20px;
   }
 `;
