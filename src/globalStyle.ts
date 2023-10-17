@@ -9,9 +9,10 @@ export const GlobalStyle = createGlobalStyle`
 
   :root{
     --white: #eff1f0;
+    --light-blue: #cdd5ff;
     --blue: #201454;
-    --violet: #511970;
     --dark-blue: #1c1f30;
+    --violet: #511970;
   }
 
   body {
@@ -29,11 +30,11 @@ export const GlobalStyle = createGlobalStyle`
     padding: 1rem;
     margin: 0.25rem auto;
 
-    &:hover {
+    &:hover:not([disabled]) {
       transform: scale(1.1);
     }
 
-    &:active {
+    &:active:not([disabled]) {
       transform: scale(0.9);
     }
   }

@@ -2,10 +2,10 @@ import { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGame } from 'src/contexts/gameContext';
 import useCountdown from 'src/hooks/useCountdown';
+import TimeBar from 'src/components/TimeBar';
 import Name from '../../images/name2.png';
 import RestartImg from '../../images/restart.png';
 import Clear from '../../images/clear.png';
-import Paint from '../../images/round.png';
 import Back from '../../images/back.png';
 import History from '../../components/History';
 import * as St from './styles';
@@ -92,8 +92,6 @@ export default function Game() {
     }
   };
 
-  console.log({ buttonDisabled, generalTime, partialTime });
-
   return (
     <St.Container>
       <St.ColorsHistory>
@@ -131,10 +129,9 @@ export default function Game() {
           </section>
           <p>Pontuação</p>
         </St.Score>
-        <St.Color background={correctColor}>
-          <div>
-            <img src={Paint} alt="paint" />
-          </div>
+        <St.Color background={generalTime !== 0 ? correctColor : 'transparent'}>
+          <TimeBar percentage={(generalTime / 30) * 100} />
+          <div></div>
         </St.Color>
         <button
           disabled={buttonDisabled}

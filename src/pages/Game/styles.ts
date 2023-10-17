@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export const ColorsHistory = styled.div`
-  width: 25%;
+  width: 30%;
   text-align: center;
   padding: 1rem;
   background-color: var(--dark-blue);
@@ -52,15 +52,15 @@ export const Game = styled.div`
   width: 50%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 1fr 4fr 1fr;
-  padding: 2rem;
+  grid-template-rows: 1fr 1fr 4.5fr 0.5fr;
+  padding: 1rem 0;
 
   > button {
     background-color: var(--dark-blue);
     color: var(--white);
     font-weight: bold;
     border-radius: 1rem;
-    height: 4rem;
+    height: 3rem;
     letter-spacing: 0.1rem;
   }
 `;
@@ -123,25 +123,19 @@ export const Title = styled.section`
 export const Color = styled.section<IStyleProps>`
   grid-area: 3/1/4/4;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 1rem 0;
 
-  > div {
+  div:last-of-type {
     background-color: ${(props) => props.background};
-    border-radius: '50% 50%';
-  }
-
-  div,
-  img {
-    width: 20rem;
-    height: 20rem;
-    position: relative;
-    top: 0rem;
-    left: 0rem;
-  }
-
-  img {
-    z-index: 10;
+    border-radius: 50%;
+    width: 16rem;
+    height: 16rem;
+    position: absolute;
+    z-index: 0;
   }
 `;
 
