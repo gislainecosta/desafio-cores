@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGame } from 'src/contexts/gameContext';
+import useCountdown from 'src/hooks/useCountdown';
 import Name from '../../images/name2.png';
 import RestartImg from '../../images/restart.png';
 import Clear from '../../images/clear.png';
@@ -14,8 +15,9 @@ export default function Game() {
   const { store } = useGame();
   const [correctColor, setCorrectColor] = useState<string>('');
   const [colors, setColors] = useState<string[]>([]);
-  const [generalTimer, setGeneralTimer] = useState<number>(30);
-  //const [partialTimer, setPartialTimer] = useState<number>(0);
+  const { secondsLeft: generalTime, start: generalStart } = useCountdown();
+  const { secondsLeft: partialTime, start: partialStart } = useCountdown();
+  const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const player = store.player;
 
@@ -44,30 +46,38 @@ export default function Game() {
   const clear = () => {
     setColors([]);
     setCorrectColor('');
-    setGeneralTimer(30);
     setScore(0);
+    generalStart(30);
+    setButtonDisabled(false);
   };
 
+  useLayoutEffect(() => {
+    generalStart(30);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
-    if (generalTimer > 0) {
-      const interval = setInterval(() => {
-        setGeneralTimer(generalTimer - 1);
-      }, 1000);
-      return () => {
-        clearInterval(interval);
-      };
+    if (partialTime === 0 && generalTime !== 0) {
+      generateRandomColor();
+      partialStart(10);
+      setButtonDisabled(false);
+      setScore(score - 2);
+    } else {
+      if (generalTime === 0) {
+        setButtonDisabled(true);
+      }
     }
 
-    if (generalTimer === 0) clear();
-  }, [generalTimer]);
+    if (score < 0) setScore(0);
+  }, [generalTime, partialStart, partialTime, score]);
 
   useEffect(() => {
     if (colors.length === 0) {
       generateRandomColor();
-      setGeneralTimer(30);
       setScore(0);
+      generalStart(30);
     }
-  }, [colors]);
+  }, [colors, generalStart]);
 
   const checkAnswer = (answer: string) => {
     if (answer === correctColor) {
@@ -75,10 +85,14 @@ export default function Game() {
     } else {
       setScore(score - 1 < 0 ? 0 : score - 1);
     }
-    if (generalTimer !== 0) {
+
+    if (generalTime !== 0) {
       generateRandomColor();
+      partialStart(10);
     }
   };
+
+  console.log({ buttonDisabled, generalTime, partialTime });
 
   return (
     <St.Container>
@@ -98,8 +112,8 @@ export default function Game() {
         <St.CronoImg>
           <div>
             <p>
-              {generalTimer < 10 && 0}
-              {generalTimer}
+              {generalTime < 10 && 0}
+              {generalTime}
             </p>
           </div>
           <p>Tempo</p>
@@ -122,9 +136,24 @@ export default function Game() {
             <img src={Paint} alt="paint" />
           </div>
         </St.Color>
-        <button onClick={() => checkAnswer(colors[0])}>{colors[0]}</button>
-        <button onClick={() => checkAnswer(colors[1])}>{colors[1]}</button>
-        <button onClick={() => checkAnswer(colors[2])}>{colors[2]}</button>
+        <button
+          disabled={buttonDisabled}
+          onClick={() => checkAnswer(colors[0])}
+        >
+          {colors[0]}
+        </button>
+        <button
+          disabled={buttonDisabled}
+          onClick={() => checkAnswer(colors[1])}
+        >
+          {colors[1]}
+        </button>
+        <button
+          disabled={buttonDisabled}
+          onClick={() => checkAnswer(colors[2])}
+        >
+          {colors[2]}
+        </button>
       </St.Game>
       <St.Actions>
         <section>
