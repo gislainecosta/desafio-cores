@@ -22,6 +22,7 @@ export const Container = styled.div`
     background: url(${ButtonBackground});
     background-size: 100% 100%;
     color: var(--white);
+    padding: 1.5rem 2rem;
   }
 `;
 
@@ -32,7 +33,7 @@ export const Logo = styled.img`
 `;
 
 export const Name = styled.img`
-  width: 16rem;
+  width: 20rem;
   display: block;
   margin-bottom: 2rem;
 `;

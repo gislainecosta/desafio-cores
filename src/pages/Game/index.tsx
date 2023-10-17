@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useGame } from 'src/contexts/gameContext';
 import Name from '../../images/name2.png';
 import RestartImg from '../../images/restart.png';
+import Clear from '../../images/clear.png';
 import Paint from '../../images/round.png';
 import Crono from '../../images/timer.png';
+import Back from '../../images/back.png';
+import History from '../../components/History';
 import * as St from './styles';
 
 export default function Game() {
@@ -35,12 +38,8 @@ export default function Game() {
     }
   };
 
-  const history = player.colors.map((color, index) => (
-    <article key={index}>
-      <p>{color.guessedColor}</p>
-      <p>{color.correctColor}</p>
-      <p>{color.time}</p>
-    </article>
+  const history = player.colors.map((data, index) => (
+    <History key={index} color={data} />
   ));
 
   const clear = () => {
@@ -86,14 +85,12 @@ export default function Game() {
     <St.Container>
       <St.ColorsHistory>
         <h3>HISTÓRICO DE RODADAS</h3>
-        <div>
-          <header>
-            <p>Sua Resposta</p>
-            <p>Resposta correta</p>
-            <p>Tempo</p>
-          </header>
-          <main>{history}</main>
-        </div>
+        <header>
+          <p>Sua Resposta</p>
+          <p>Resposta correta</p>
+          <p>Tempo</p>
+        </header>
+        <main>{history}</main>
       </St.ColorsHistory>
       <St.Game>
         <St.Title>
@@ -117,13 +114,8 @@ export default function Game() {
           </section>
           <p>Pontuação</p>
         </St.Score>
-        <St.Color color={correctColor}>
-          <div
-            style={{
-              backgroundColor: `${correctColor}`,
-              borderRadius: '50% 50%',
-            }}
-          >
+        <St.Color background={correctColor}>
+          <div>
             <img src={Paint} alt="paint" />
           </div>
         </St.Color>
@@ -131,10 +123,16 @@ export default function Game() {
         <button onClick={() => checkAnswer(colors[1])}>{colors[1]}</button>
         <button onClick={() => checkAnswer(colors[2])}>{colors[2]}</button>
       </St.Game>
-      <div>
-        <button onClick={() => navigate('/')}>Voltar ao menu</button>
-        <button onClick={clear}>Limpar Dados</button>
-      </div>
+      <St.Actions>
+        <section>
+          <img onClick={() => navigate('/')} src={Back} alt="Página Inicial" />
+          <button onClick={() => navigate('/')}>Início</button>
+        </section>
+        <section>
+          <img onClick={clear} src={Clear} alt="Página Inicial" />
+          <button onClick={clear}>Limpar Dados</button>
+        </section>
+      </St.Actions>
     </St.Container>
   );
 }

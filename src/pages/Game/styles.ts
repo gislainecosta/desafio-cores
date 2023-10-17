@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
+interface IStyleProps {
+  background: string;
+}
+
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
+  justify-content: space-between;
 `;
 
 export const ColorsHistory = styled.div`
@@ -11,17 +16,17 @@ export const ColorsHistory = styled.div`
   text-align: center;
   padding: 1rem;
 
-  > div {
-    overflow-y: scroll;
-    height: 100%;
-    padding-right: 1rem;
+  > header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
 
-    > header {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      margin: 1rem auto;
-    }
+  > main {
+    overflow-y: scroll;
+    height: 90%;
+    padding: 1rem 2rem;
   }
 `;
 
@@ -60,8 +65,8 @@ export const Score = styled.div`
     color: var(--white);
     background-color: var(--dark-blue);
     border-radius: 1rem;
-    height: 3.7rem;
-    margin-bottom: 0.1rem;
+    height: 5rem;
+    margin-bottom: 0.4rem;
     width: 8rem;
     padding: 0.5rem 1rem;
 
@@ -95,11 +100,16 @@ export const Title = styled.section`
   grid-area: 1/1/2/4;
 `;
 
-export const Color = styled.section`
+export const Color = styled.section<IStyleProps>`
   grid-area: 3/1/4/4;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  > div {
+    background-color: ${(props) => props.background};
+    border-radius: '50% 50%';
+  }
 
   div,
   img {
@@ -123,7 +133,7 @@ export const Restart = styled.section`
   padding: 0.5rem 0;
 
   img {
-    width: 4rem;
+    height: 6rem;
     display: block;
     margin: auto;
     cursor: pointer;
@@ -148,7 +158,7 @@ export const CronoImg = styled.section`
   position: relative;
 
   img {
-    height: 4rem;
+    height: 6rem;
     display: block;
     margin: 0 auto;
   }
@@ -157,8 +167,29 @@ export const CronoImg = styled.section`
     z-index: 1;
     position: absolute;
     color: var(--white);
-    top: 1.8rem;
+    top: 2.8rem;
     left: 46%;
     text-align: center;
+  }
+`;
+
+export const Actions = styled.div`
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+
+    button {
+      color: var(--blue);
+      font-weight: bold;
+      padding: 0;
+    }
+
+    img {
+      width: 4rem;
+      height: 4rem;
+      cursor: pointer;
+    }
   }
 `;

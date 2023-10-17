@@ -29,7 +29,6 @@ export default function Home() {
       <section>
         <St.Name src={Name} alt="Game name" />
         <button onClick={() => navigate('/jogo')}>Iniciar</button>
-        <button onClick={() => navigate('/tutorial')}>Tutorial</button>
       </section>
       <St.Logo src={Logo} alt="Logo" />
       <St.Ranking>

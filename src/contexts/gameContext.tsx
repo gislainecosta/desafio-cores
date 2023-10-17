@@ -76,7 +76,38 @@ const initialState = {
   ],
   player: {
     highscore: 0,
-    colors: [],
+    colors: [
+      {
+        time: 3,
+        guessedColor: '#000000',
+        correctColor: '#00AAFF',
+      },
+      {
+        time: 12,
+        guessedColor: '#772626',
+        correctColor: '#149730',
+      },
+      {
+        time: 3,
+        guessedColor: '#dbb6b6',
+        correctColor: '#dbb6b6',
+      },
+      {
+        time: 5,
+        guessedColor: '#890e94',
+        correctColor: '#af5baf',
+      },
+      {
+        time: 10,
+        guessedColor: '#24bda3',
+        correctColor: '#24bda3',
+      },
+      {
+        time: 20,
+        guessedColor: '#a5c05a',
+        correctColor: '#38cc3f',
+      },
+    ],
     username: '',
   },
 };

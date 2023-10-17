@@ -4,7 +4,6 @@ import { GlobalStyle } from './globalStyle';
 import Game from './pages/Game';
 import Home from './pages/Home';
 import { GameContextProvider } from './contexts/gameContext';
-import Tutorial from './pages/Tutorial';
 
 const ContainerApp = styled.div`
   height: 100vh;
@@ -24,7 +23,6 @@ function App() {
           <Routes>
             <Route path="/jogo" element={<Game />} />
             <Route path="/" element={<Home />} />
-            <Route path="/tutorial" element={<Tutorial />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
