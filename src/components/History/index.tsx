@@ -36,7 +36,7 @@ export default function History({ color }: IProps) {
           </St.ColorText>
         </div>
       )}
-      <p>{color.time}</p>
+      <p>{color.time}s</p>
     </St.History>
   );
 }

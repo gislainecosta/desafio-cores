@@ -12,7 +12,7 @@ export const Container = styled.div`
 `;
 
 export const ColorsHistory = styled.div`
-  width: 30%;
+  width: 25%;
   text-align: center;
   padding: 1rem;
 
@@ -20,7 +20,10 @@ export const ColorsHistory = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
     padding: 1rem 2rem;
+    word-break: normal;
   }
 
   > main {
