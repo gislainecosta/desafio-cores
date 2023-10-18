@@ -3,11 +3,15 @@
 ### *Este teste foi desenvolvido pela SoftExpert para o cargo de Desenvolvedor web frontend, sendo realizado por Gislaine Costa.* [Link do Repositório Inicial](https://github.com/gustavoittner/AnalyticsDesafioFront)
 <br>
 
+💻 [Deploy da aplicação (Otimizado para Desktop)](https://desafio-cores.surge.sh/)
+<br>
+
 ## Sumário
   - [Como o jogo funciona](#como-o-jogo-funciona)
   - [Requisitos do projeto](#requisitos-do-projeto)
   - [Ferramentas e Tecnologias Utilizadas](#ferramentas-e-tecnologias-utilizadas)
   - [Instruções de início](#instruções-de-início)
+  - [Melhorias Futuras](#melhorias-futuras)
 <br>
 
 ## Como o jogo funciona
@@ -49,3 +53,9 @@ O jogo conta também com o máximo de pontuação que já foi feita em uma parti
     * `yarn`
   * Inicialize o projeto:
     * `yarn dev` (A aplicação será iniciada em http://localhost:3000/)
+   
+## Melhorias Futuras
+1. Responsividade para diferentes tipos de telas (Atualmente está otimizado para desktop)
+2. Testes unitários
+3. Página de Tutorial
+4. CD e CI
