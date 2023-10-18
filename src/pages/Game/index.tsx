@@ -69,9 +69,8 @@ export default function Game() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log({ ranking });
-
   useEffect(() => {
+    if (!player.username) navigate('/');
     if (partialTime === 0 && generalTime !== 0) {
       generateRandomColor();
       partialStart(10);
@@ -92,7 +91,6 @@ export default function Game() {
           );
 
           ranking[index].highscore = score;
-          actions.setRanking(ranking);
         }
         setButtonDisabled(true);
       }

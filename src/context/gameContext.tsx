@@ -67,7 +67,7 @@ const initialState = {
     },
   ],
   player: {
-    username: '',
+    username: null,
     highscore: 0,
     colors: [
       {

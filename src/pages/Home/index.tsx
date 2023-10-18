@@ -38,8 +38,6 @@ export default function Home() {
     navigate('/jogo');
   };
 
-  console.log(store.ranking);
-
   return (
     <St.Container>
       <St.Start>
