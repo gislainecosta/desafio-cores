@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { GlobalStyle } from './globalStyle';
 import Game from './pages/Game';
 import Home from './pages/Home';
-import { GameContextProvider } from './contexts/gameContext';
+import { GameContextProvider } from './context/gameContext';
 
 const ContainerApp = styled.div`
   height: 100vh;

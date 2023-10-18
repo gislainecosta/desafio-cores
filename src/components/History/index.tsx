@@ -11,7 +11,7 @@ export default function History({ color }: IProps) {
   const isCorrect = color.guessedColor === color.correctColor;
 
   return (
-    <St.History isCorrect={isCorrect}>
+    <St.History>
       {isCorrect ? (
         <section>
           <St.ColorText

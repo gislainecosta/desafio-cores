@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 interface IStyleProps {
   percentage: number;
-  dashArray: number;
-  dashOffset: number;
+  array: number;
+  offset: number;
 }
 
 export const Container = styled.svg<IStyleProps>`
@@ -22,7 +22,7 @@ export const Container = styled.svg<IStyleProps>`
 
   circle:last-of-type {
     stroke: var(--dark-blue);
-    stroke-dasharray: ${(props) => props.dashArray};
-    stroke-dashoffset: ${(props) => props.dashOffset};
+    stroke-dasharray: ${(props) => props.array};
+    stroke-dashoffset: ${(props) => props.offset};
   }
 `;

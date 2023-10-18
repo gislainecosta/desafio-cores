@@ -85,13 +85,13 @@ export const Score = styled.div`
     color: var(--white);
     background-color: var(--dark-blue);
     border-radius: 1rem;
-    height: 5rem;
+    height: 4.8rem;
     margin-bottom: 0.4rem;
     width: 8rem;
-    padding: 0.5rem 1rem;
+    padding: 0.1rem 0.8rem;
 
     p {
-      padding: 0.1rem 0;
+      padding: 0.5rem 0;
     }
 
     p:nth-of-type(2) {
@@ -136,6 +136,16 @@ export const Color = styled.section<IStyleProps>`
     height: 16rem;
     position: absolute;
     z-index: 0;
+  }
+
+  div {
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    background-color: var(--light-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -190,6 +200,11 @@ export const CronoImg = styled.section`
 `;
 
 export const Actions = styled.div`
+  padding: 1rem 0;
+  p {
+    text-align: center;
+  }
+
   section {
     display: flex;
     flex-direction: column;

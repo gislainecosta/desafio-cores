@@ -1,23 +1,28 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useGame } from 'src/contexts/gameContext';
+import { useGame } from 'src/context/gameContext';
 import useCountdown from 'src/hooks/useCountdown';
 import TimeBar from 'src/components/TimeBar';
+import { produce } from 'immer';
 import Name from '../../images/name2.png';
 import RestartImg from '../../images/restart.png';
 import Clear from '../../images/clear.png';
+import Check from '../../images/check_answer.svg';
+import Error from '../../images/error_answer.svg';
 import Back from '../../images/back.png';
 import History from '../../components/History';
 import * as St from './styles';
 
 export default function Game() {
   const navigate = useNavigate();
-  const { store } = useGame();
+  const { store, actions } = useGame();
   const [correctColor, setCorrectColor] = useState<string>('');
   const [colors, setColors] = useState<string[]>([]);
   const { secondsLeft: generalTime, start: generalStart } = useCountdown();
   const { secondsLeft: partialTime, start: partialStart } = useCountdown();
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
+  const [showAnswerIcon, setAnswerShowIcon] = useState<boolean>(false);
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const player = store.player;
 
@@ -49,6 +54,14 @@ export default function Game() {
     setScore(0);
     generalStart(30);
     setButtonDisabled(false);
+    partialStart(10);
+  };
+
+  const showIcon = () => {
+    setAnswerShowIcon(true);
+    setTimeout(() => {
+      setAnswerShowIcon(false);
+    }, 200);
   };
 
   useLayoutEffect(() => {
@@ -62,14 +75,35 @@ export default function Game() {
       partialStart(10);
       setButtonDisabled(false);
       setScore(score - 2);
+
+      if (colors.length !== 0) {
+        setIsCorrect(false);
+        showIcon();
+      }
     } else {
       if (generalTime === 0) {
+        console.log('CHAMOU AQUI', { score, player });
+        if (player.highscore < score) {
+          actions.setPlayer(
+            produce(player, (draft) => {
+              draft.highscore = score;
+            }),
+          );
+        }
         setButtonDisabled(true);
       }
     }
 
     if (score < 0) setScore(0);
-  }, [generalTime, partialStart, partialTime, score]);
+  }, [
+    actions,
+    colors.length,
+    generalTime,
+    partialStart,
+    partialTime,
+    player,
+    score,
+  ]);
 
   useEffect(() => {
     if (colors.length === 0) {
@@ -82,9 +116,13 @@ export default function Game() {
   const checkAnswer = (answer: string) => {
     if (answer === correctColor) {
       setScore(score + 5);
+      setIsCorrect(true);
     } else {
       setScore(score - 1 < 0 ? 0 : score - 1);
+      setIsCorrect(false);
     }
+
+    showIcon();
 
     if (generalTime !== 0) {
       generateRandomColor();
@@ -129,8 +167,13 @@ export default function Game() {
           </section>
           <p>Pontuação</p>
         </St.Score>
-        <St.Color background={generalTime !== 0 ? correctColor : 'transparent'}>
+        <St.Color background={correctColor}>
           <TimeBar percentage={(generalTime / 30) * 100} />
+          {showAnswerIcon && (
+            <div>
+              <img src={isCorrect ? Check : Error} alt="response" />
+            </div>
+          )}
           <div></div>
         </St.Color>
         <button
@@ -153,6 +196,7 @@ export default function Game() {
         </button>
       </St.Game>
       <St.Actions>
+        <p>Olá {player.username}!</p>
         <section>
           <img onClick={() => navigate('/')} src={Back} alt="Página Inicial" />
           <button onClick={() => navigate('/')}>Início</button>

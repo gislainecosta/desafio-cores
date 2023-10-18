@@ -4,7 +4,6 @@ interface IStyleProps {
   background?: string;
   color?: string;
   width?: string;
-  isCorrect?: boolean;
 }
 
 export const History = styled.article<IStyleProps>`

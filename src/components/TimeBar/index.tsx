@@ -13,10 +13,10 @@ export default function TimeBar({ percentage }: Iprops) {
     <St.Container
       width="18.5rem"
       height="18.5rem"
-      viewBox="0 0 18.5rem 18.5rem"
+      viewBox="0 0 294 294"
       percentage={percentage}
-      dashArray={dashArray}
-      dashOffset={dashOffset}
+      array={dashArray}
+      offset={dashOffset}
     >
       <circle cx="9.25rem" cy="9.25rem" strokeWidth="1.8rem" r={radius} />
       <circle
@@ -24,7 +24,7 @@ export default function TimeBar({ percentage }: Iprops) {
         cy="9.25rem"
         strokeWidth="1.8rem"
         r={radius}
-        transform="rotate(272 148 148)"
+        transform="rotate(270 148 148)"
       ></circle>
     </St.Container>
   );

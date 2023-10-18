@@ -75,7 +75,8 @@ const initialState = {
     },
   ],
   player: {
-    highscore: 0,
+    username: 'Gika',
+    highscore: 10,
     colors: [
       {
         time: 3,
@@ -208,7 +209,6 @@ const initialState = {
         correctColor: '#38cc3f',
       },
     ],
-    username: '',
   },
 };
 
