@@ -47,7 +47,7 @@ O jogo conta também com o máximo de pontuação que já foi feita em uma parti
 - Git
 <br>
 
-## Instruções de início
+## Instruções de início (para desenvolvimento)
 1. Após clonar e acessar o repositório, instale as dependências e inicialize o projeto
   * Instale as dependências:
     * `yarn`
