@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import RankingBackground from '../../images/painting_easel.png';
+import RankingBackground from 'src/images/painting_easel.png';
 
 export const Container = styled.div`
   justify-content: space-around;

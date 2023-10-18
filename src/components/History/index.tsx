@@ -1,6 +1,6 @@
 import { getBrightness } from 'src/utils/game';
-import Check from '../../images/check.svg';
-import Error from '../../images/error.svg';
+import Check from 'src/images/check.svg';
+import Error from 'src/images/error.svg';
 import * as St from './styles';
 
 interface IProps {

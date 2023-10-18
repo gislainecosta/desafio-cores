@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Crono from '../../images/timer.png';
+import Crono from 'src/images/timer.png';
 
 interface IStyleProps {
   background: string;

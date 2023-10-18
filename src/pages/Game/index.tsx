@@ -4,13 +4,13 @@ import { useGame } from 'src/context/gameContext';
 import useCountdown from 'src/hooks/useCountdown';
 import TimeBar from 'src/components/TimeBar';
 import useRandomColor from 'src/hooks/useRandomColor';
-import Name from '../../images/name2.png';
-import RestartImg from '../../images/restart.png';
-import Clear from '../../images/clear.png';
-import Check from '../../images/check_answer.svg';
-import Error from '../../images/error_answer.svg';
-import Back from '../../images/back.png';
-import History from '../../components/History';
+import Name from 'src/images/name2.png';
+import RestartImg from 'src/images/restart.png';
+import Clear from 'src/images/clear.png';
+import Check from 'src/images/check_answer.svg';
+import Error from 'src/images/error_answer.svg';
+import Back from 'src/images/back.png';
+import History from 'src/components/History';
 import * as St from './styles';
 
 export default function Game() {

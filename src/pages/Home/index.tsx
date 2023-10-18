@@ -1,8 +1,8 @@
 import { useGame } from 'src/context/gameContext';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import Name from '../../images/name.png';
-import Logo from '../../images/Logo.png';
+import Name from 'src/images/name.png';
+import Logo from 'src/images/Logo.png';
 import * as St from './styles';
 
 export default function Home() {
