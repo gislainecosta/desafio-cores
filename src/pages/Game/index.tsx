@@ -128,9 +128,19 @@ export default function Game() {
     if (answer === correctColor) {
       setScore(score + 5);
       setIsCorrect(true);
+      if (generalTime < 29) {
+        generalStart(generalTime + 2);
+      } else {
+        generalStart(30);
+      }
     } else {
       setScore(score - 1 < 0 ? 0 : score - 1);
       setIsCorrect(false);
+      if (generalTime > 3) {
+        generalStart(generalTime - 2);
+      } else {
+        generalStart(0);
+      }
     }
 
     saveHistory(answer);
