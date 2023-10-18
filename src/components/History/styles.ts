@@ -34,5 +34,5 @@ export const ColorText = styled.p<IStyleProps>`
   color: ${(props) => props.color};
   background-color: ${(props) => props.background};
   letter-spacing: 0.1rem;
-  border: ${(props) => props.border};
+  border: ${(props) => props.border || '1px solid var(--white)'};
 `;

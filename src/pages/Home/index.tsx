@@ -30,15 +30,16 @@ export default function Home() {
     });
 
   const startGame = () => {
-    actions.setPlayer({ ...store.player, username: playerName });
+    if (playerName !== store.player.username) {
+      actions.setPlayer({ ...store.player, username: playerName });
 
-    const newPlayer = {
-      username: playerName,
-      highscore: 0,
-      colors: [],
-    };
+      const newPlayer = {
+        username: playerName,
+        highscore: 0,
+      };
 
-    actions.setRanking([...store.ranking, newPlayer]);
+      actions.setRanking([...store.ranking, newPlayer]);
+    }
     navigate('/jogo');
   };
 

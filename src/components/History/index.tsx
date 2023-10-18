@@ -36,7 +36,6 @@ export default function History({ color }: IProps) {
             color={getBrightness(color.correctColor)}
             background={color.correctColor}
             width="7rem"
-            border={'1px solid var(--white)'}
           >
             {color.correctColor}
           </St.ColorText>

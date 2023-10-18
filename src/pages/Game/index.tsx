@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGame } from 'src/context/gameContext';
 import useCountdown from 'src/hooks/useCountdown';
@@ -75,18 +75,21 @@ export default function Game() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const saveHistory = (answer: string | '') => {
-    const newAnswer = {
-      guessedColor: answer,
-      correctColor,
-      time: 10 - partialTime,
-    };
+  const saveHistory = useCallback(
+    (answer: string | '') => {
+      const newAnswer = {
+        guessedColor: answer,
+        correctColor,
+        time: 10 - partialTime,
+      };
 
-    actions.setPlayer({
-      ...player,
-      colors: [newAnswer, ...player.colors],
-    });
-  };
+      actions.setPlayer({
+        ...player,
+        colors: [newAnswer, ...player.colors],
+      });
+    },
+    [actions, correctColor, partialTime, player],
+  );
 
   useEffect(() => {
     if (!player.username) navigate('/');
@@ -111,9 +114,7 @@ export default function Game() {
           );
 
           ranking[index].highscore = score;
-
-          console.log({ ranking, index, score });
-          console.log(ranking[index]);
+          actions.setRanking([...ranking]);
         }
         setButtonDisabled(true);
       }
@@ -124,10 +125,12 @@ export default function Game() {
     actions,
     colors.length,
     generalTime,
+    navigate,
     partialStart,
     partialTime,
     player,
     ranking,
+    saveHistory,
     score,
   ]);
 
