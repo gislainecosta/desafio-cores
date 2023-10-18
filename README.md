@@ -10,7 +10,7 @@
   - [Como o jogo funciona](#como-o-jogo-funciona)
   - [Requisitos do projeto](#requisitos-do-projeto)
   - [Ferramentas e Tecnologias Utilizadas](#ferramentas-e-tecnologias-utilizadas)
-  - [Instruções de início](#instruções-de-início)
+  - [Iniciar Repositório](#iniciar-repositório)
   - [Melhorias Futuras](#melhorias-futuras)
 <br>
 
@@ -47,12 +47,13 @@ O jogo conta também com o máximo de pontuação que já foi feita em uma parti
 - Git
 <br>
 
-## Instruções de início (para desenvolvimento)
+## Iniciar Repositório
 1. Após clonar e acessar o repositório, instale as dependências e inicialize o projeto
   * Instale as dependências:
     * `yarn`
   * Inicialize o projeto:
     * `yarn dev` (A aplicação será iniciada em http://localhost:3000/)
+<br>
    
 ## Melhorias Futuras
 1. Responsividade para diferentes tipos de telas (Atualmente está otimizado para desktop)
