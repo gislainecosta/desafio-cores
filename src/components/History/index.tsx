@@ -27,6 +27,7 @@ export default function History({ color }: IProps) {
           <St.ColorText
             color={getBrightness(color.guessedColor)}
             background={color.guessedColor}
+            border={color.guessedColor ? '1px solid var(--white)' : 'none'}
             width="7rem"
           >
             {color.guessedColor}
@@ -35,6 +36,7 @@ export default function History({ color }: IProps) {
             color={getBrightness(color.correctColor)}
             background={color.correctColor}
             width="7rem"
+            border={'1px solid var(--white)'}
           >
             {color.correctColor}
           </St.ColorText>

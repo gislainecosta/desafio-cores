@@ -69,17 +69,31 @@ export default function Game() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const saveHistory = (answer: string | '') => {
+    const newAnswer = {
+      guessedColor: answer,
+      correctColor,
+      time: 10 - partialTime,
+    };
+
+    actions.setPlayer({
+      ...player,
+      colors: [newAnswer, ...player.colors],
+    });
+  };
+
   useEffect(() => {
     if (!player.username) navigate('/');
     if (partialTime === 0 && generalTime !== 0) {
       generateRandomColor();
       partialStart(10);
       setButtonDisabled(false);
-      setScore(score - 2);
 
       if (colors.length !== 0) {
         setIsCorrect(false);
         showIcon();
+        setScore(score - 2);
+        saveHistory('');
       }
     } else {
       if (generalTime === 0) {
@@ -91,6 +105,9 @@ export default function Game() {
           );
 
           ranking[index].highscore = score;
+
+          console.log({ ranking, index, score });
+          console.log(ranking[index]);
         }
         setButtonDisabled(true);
       }
@@ -124,6 +141,8 @@ export default function Game() {
       setScore(score - 1 < 0 ? 0 : score - 1);
       setIsCorrect(false);
     }
+
+    saveHistory(answer);
 
     showIcon();
 

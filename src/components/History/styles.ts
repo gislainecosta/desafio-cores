@@ -4,6 +4,7 @@ interface IStyleProps {
   background?: string;
   color?: string;
   width?: string;
+  border?: string;
 }
 
 export const History = styled.article<IStyleProps>`
@@ -33,5 +34,5 @@ export const ColorText = styled.p<IStyleProps>`
   color: ${(props) => props.color};
   background-color: ${(props) => props.background};
   letter-spacing: 0.1rem;
-  border: 3px solid var(--white);
+  border: ${(props) => props.border};
 `;
