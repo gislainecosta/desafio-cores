@@ -12,5 +12,5 @@ interface IColor {
 interface IPlayer {
   highscore: number;
   colors: IColor[];
-  username: string;
+  username: string | null;
 }

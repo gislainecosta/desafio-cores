@@ -48,13 +48,19 @@ export default function Game() {
     <History key={index} color={data} />
   ));
 
-  const clear = () => {
+  const restartGame = () => {
     setColors([]);
     setCorrectColor('');
     setScore(0);
     generalStart(30);
     setButtonDisabled(false);
     partialStart(10);
+  };
+
+  const resetData = () => {
+    restartGame();
+
+    actions.clearStore();
   };
 
   const showIcon = () => {
@@ -177,8 +183,8 @@ export default function Game() {
           <p>Tempo</p>
         </St.CronoImg>
         <St.Restart>
-          <img onClick={clear} src={RestartImg} alt="restart" />
-          <button onClick={clear}>Reiniciar</button>
+          <img onClick={restartGame} src={RestartImg} alt="restart" />
+          <button onClick={restartGame}>Reiniciar</button>
         </St.Restart>
         <St.Score>
           <section>
@@ -224,8 +230,8 @@ export default function Game() {
           <button onClick={() => navigate('/')}>Início</button>
         </section>
         <section>
-          <img onClick={clear} src={Clear} alt="Página Inicial" />
-          <button onClick={clear}>Limpar Dados</button>
+          <img onClick={resetData} src={Clear} alt="Página Inicial" />
+          <button onClick={resetData}>Limpar Dados</button>
         </section>
       </St.Actions>
     </St.Container>

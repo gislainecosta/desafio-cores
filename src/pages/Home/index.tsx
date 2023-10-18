@@ -7,7 +7,9 @@ import * as St from './styles';
 
 export default function Home() {
   const { store, actions } = useGame();
-  const [playerName, setPlayerName] = useState<string>(store.player.username);
+  const [playerName, setPlayerName] = useState<string>(
+    store.player.username ?? '',
+  );
   const navigate = useNavigate();
 
   const ranking = store.ranking

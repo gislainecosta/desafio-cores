@@ -14,6 +14,7 @@ interface IGameStore {
 interface IGlobalActions {
   setRanking: (ranking: IRanking[]) => void;
   setPlayer: (player: IPlayer) => void;
+  clearStore: () => void;
 }
 
 interface IGameContext {
@@ -24,24 +25,6 @@ interface IGameContext {
 interface IGameProviderProps {
   children: ReactNode;
 }
-
-const reducers = (
-  store: IGameStore,
-  action: { type: string; payload?: any },
-) => {
-  const { type, payload } = action;
-
-  switch (type) {
-    case 'SET_RANKING':
-      return { ...store, ranking: payload };
-    case 'SET_PLAYER':
-      return { ...store, player: payload };
-    default:
-      return store;
-  }
-};
-
-const GameContext = createContext<IGameContext>({} as IGameContext);
 
 const initialState = {
   ranking: [
@@ -73,6 +56,26 @@ const initialState = {
   },
 };
 
+const reducers = (
+  store: IGameStore,
+  action: { type: string; payload?: any },
+) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case 'SET_RANKING':
+      return { ...store, ranking: payload };
+    case 'SET_PLAYER':
+      return { ...store, player: payload };
+    case 'CLEAR_STORE':
+      return initialState;
+    default:
+      return store;
+  }
+};
+
+const GameContext = createContext<IGameContext>({} as IGameContext);
+
 export function GameContextProvider({ children }: IGameProviderProps) {
   const [store, dispatch] = useReducer(reducers, initialState);
 
@@ -83,6 +86,9 @@ export function GameContextProvider({ children }: IGameProviderProps) {
       },
       setPlayer: (player: IPlayer) => {
         dispatch({ type: 'SET_PLAYER', payload: player });
+      },
+      clearStore: () => {
+        dispatch({ type: 'CLEAR_STORE' });
       },
     }),
     [dispatch],
