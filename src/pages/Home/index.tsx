@@ -7,6 +7,7 @@ import * as St from './styles';
 
 export default function Home() {
   const { store, actions } = useGame();
+
   const [playerName, setPlayerName] = useState<string>(
     store.player.username ?? '',
   );
@@ -34,6 +35,7 @@ export default function Home() {
     const newPlayer = {
       username: playerName,
       highscore: 0,
+      colors: [],
     };
 
     actions.setRanking([...store.ranking, newPlayer]);

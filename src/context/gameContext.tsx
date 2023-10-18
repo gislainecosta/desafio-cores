@@ -2,6 +2,7 @@ import {
   createContext,
   ReactNode,
   useContext,
+  useLayoutEffect,
   useMemo,
   useReducer,
 } from 'react';
@@ -79,16 +80,26 @@ const GameContext = createContext<IGameContext>({} as IGameContext);
 export function GameContextProvider({ children }: IGameProviderProps) {
   const [store, dispatch] = useReducer(reducers, initialState);
 
+  useLayoutEffect(() => {
+    const player = localStorage.getItem('player');
+
+    if (player) {
+      dispatch({ type: 'SET_PLAYER', payload: JSON.parse(player) });
+    }
+  }, []);
+
   const actions = useMemo(
     () => ({
       setRanking: (ranking: IRanking[]) => {
         dispatch({ type: 'SET_RANKING', payload: ranking });
       },
       setPlayer: (player: IPlayer) => {
+        localStorage.setItem('player', JSON.stringify(player));
         dispatch({ type: 'SET_PLAYER', payload: player });
       },
       clearStore: () => {
         dispatch({ type: 'CLEAR_STORE' });
+        localStorage.clear();
       },
     }),
     [dispatch],
