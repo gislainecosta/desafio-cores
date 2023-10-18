@@ -46,37 +46,29 @@ const GameContext = createContext<IGameContext>({} as IGameContext);
 const initialState = {
   ranking: [
     {
-      username: 'Tondinha',
+      username: 'Da Vinci',
       highscore: 100,
     },
     {
-      username: 'Natasha',
-      highscore: 102,
+      username: 'Monet',
+      highscore: 72,
     },
     {
-      username: 'Luciano',
-      highscore: 95,
+      username: 'Michelangelo',
+      highscore: 97,
     },
     {
-      username: 'Scar',
-      highscore: 73,
-    },
-    {
-      username: 'Chloe',
-      highscore: 98,
-    },
-    {
-      username: 'Perséfone',
-      highscore: 80,
-    },
-    {
-      username: 'Sofia',
+      username: 'Picasso',
       highscore: 84,
+    },
+    {
+      username: 'Van Gogh',
+      highscore: 98,
     },
   ],
   player: {
-    username: 'Gika',
-    highscore: 10,
+    username: '',
+    highscore: 0,
     colors: [
       {
         time: 3,

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useGame } from 'src/context/gameContext';
 import useCountdown from 'src/hooks/useCountdown';
 import TimeBar from 'src/components/TimeBar';
-import { produce } from 'immer';
 import Name from '../../images/name2.png';
 import RestartImg from '../../images/restart.png';
 import Clear from '../../images/clear.png';
@@ -15,7 +14,6 @@ import * as St from './styles';
 
 export default function Game() {
   const navigate = useNavigate();
-  const { store, actions } = useGame();
   const [correctColor, setCorrectColor] = useState<string>('');
   const [colors, setColors] = useState<string[]>([]);
   const { secondsLeft: generalTime, start: generalStart } = useCountdown();
@@ -24,7 +22,9 @@ export default function Game() {
   const [showAnswerIcon, setAnswerShowIcon] = useState<boolean>(false);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
+  const { store, actions } = useGame();
   const player = store.player;
+  const ranking = store.ranking;
 
   const generateRandomColor = () => {
     const letters = '0123456789ABCDEF';
@@ -69,6 +69,8 @@ export default function Game() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log({ ranking });
+
   useEffect(() => {
     if (partialTime === 0 && generalTime !== 0) {
       generateRandomColor();
@@ -82,13 +84,15 @@ export default function Game() {
       }
     } else {
       if (generalTime === 0) {
-        console.log('CHAMOU AQUI', { score, player });
         if (player.highscore < score) {
-          actions.setPlayer(
-            produce(player, (draft) => {
-              draft.highscore = score;
-            }),
+          actions.setPlayer({ ...player, highscore: score });
+
+          const index = ranking.findIndex(
+            (it) => it.username === player.username,
           );
+
+          ranking[index].highscore = score;
+          actions.setRanking(ranking);
         }
         setButtonDisabled(true);
       }
@@ -102,6 +106,7 @@ export default function Game() {
     partialStart,
     partialTime,
     player,
+    ranking,
     score,
   ]);
 

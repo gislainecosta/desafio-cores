@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import RankingBackground from '../../images/painting_easel.png';
-import ButtonBackground from '../../images/button.png';
 
 export const Container = styled.div`
   justify-content: space-around;
@@ -16,13 +15,41 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
   }
+`;
 
+export const Start = styled.section`
+  div,
+  input,
   button {
     font-family: 'Finger Paint', sans-serif;
-    background: url(${ButtonBackground});
-    background-size: 100% 100%;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Finger Paint', sans-serif;
+  }
+
+  button {
+    background-color: var(--dark-blue);
     color: var(--white);
-    padding: 1.5rem 2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+  }
+
+  input {
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: var(--light-blue);
+    width: 6.5rem;
+    color: var(--blue);
+  }
+
+  input::placeholder {
+    font-size: 0.75rem;
   }
 `;
 
