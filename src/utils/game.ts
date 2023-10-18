@@ -7,21 +7,3 @@ export const getBrightness = (hexColor: string) => {
 
   return brightness < 127.5 ? '#eff1f0' : '#1c1f30';
 };
-
-export const generateRandomColor = () => {
-  const letters = '0123456789ABCDEF';
-  const randomColors = [];
-  for (let i = 0; i < 3; i++) {
-    let color = '#';
-
-    for (let j = 0; j < 6; j++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-
-    randomColors.push(color);
-
-    const correctColor = randomColors[Math.floor(Math.random() * 3)];
-
-    return { randomColors, correctColor };
-  }
-};

@@ -82,9 +82,14 @@ export function GameContextProvider({ children }: IGameProviderProps) {
 
   useLayoutEffect(() => {
     const player = localStorage.getItem('player');
+    const ranking = localStorage.getItem('ranking');
 
     if (player) {
       dispatch({ type: 'SET_PLAYER', payload: JSON.parse(player) });
+    }
+
+    if (ranking) {
+      dispatch({ type: 'SET_RANKING', payload: JSON.parse(ranking) });
     }
   }, []);
 
@@ -92,6 +97,7 @@ export function GameContextProvider({ children }: IGameProviderProps) {
     () => ({
       setRanking: (ranking: IRanking[]) => {
         dispatch({ type: 'SET_RANKING', payload: ranking });
+        localStorage.setItem('ranking', JSON.stringify(ranking));
       },
       setPlayer: (player: IPlayer) => {
         localStorage.setItem('player', JSON.stringify(player));

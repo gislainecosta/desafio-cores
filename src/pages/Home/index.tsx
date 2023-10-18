@@ -52,6 +52,11 @@ export default function Home() {
           <input
             value={playerName}
             onChange={(ev) => setPlayerName(ev.target.value)}
+            onKeyDown={(ev) => {
+              if (ev.key === 'Enter') {
+                startGame();
+              }
+            }}
             type="text"
             placeholder="Digite seu nome"
           />

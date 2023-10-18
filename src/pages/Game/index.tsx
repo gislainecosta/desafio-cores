@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useGame } from 'src/context/gameContext';
 import useCountdown from 'src/hooks/useCountdown';
 import TimeBar from 'src/components/TimeBar';
+import useRandomColor from 'src/hooks/useRandomColor';
 import Name from '../../images/name2.png';
 import RestartImg from '../../images/restart.png';
 import Clear from '../../images/clear.png';
@@ -14,8 +15,6 @@ import * as St from './styles';
 
 export default function Game() {
   const navigate = useNavigate();
-  const [correctColor, setCorrectColor] = useState<string>('');
-  const [colors, setColors] = useState<string[]>([]);
   const { secondsLeft: generalTime, start: generalStart } = useCountdown();
   const { secondsLeft: partialTime, start: partialStart } = useCountdown();
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
@@ -25,32 +24,14 @@ export default function Game() {
   const { store, actions } = useGame();
   const player = store.player;
   const ranking = store.ranking;
-
-  const generateRandomColor = () => {
-    const letters = '0123456789ABCDEF';
-    const randomColors = [];
-
-    for (let i = 0; i < 3; i++) {
-      let color = '#';
-
-      for (let j = 0; j < 6; j++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-
-      randomColors.push(color);
-
-      setColors(randomColors);
-      setCorrectColor(randomColors[Math.floor(Math.random() * 3)]);
-    }
-  };
+  const { generateRandomColor, colors, correctColor } = useRandomColor();
 
   const history = player.colors.map((data, index) => (
     <History key={index} color={data} />
   ));
 
   const restartGame = () => {
-    setColors([]);
-    setCorrectColor('');
+    generateRandomColor();
     setScore(0);
     generalStart(30);
     setButtonDisabled(false);
@@ -125,6 +106,7 @@ export default function Game() {
     actions,
     colors.length,
     generalTime,
+    generateRandomColor,
     navigate,
     partialStart,
     partialTime,
@@ -140,7 +122,7 @@ export default function Game() {
       setScore(0);
       generalStart(30);
     }
-  }, [colors, generalStart]);
+  }, [colors, generalStart, generateRandomColor]);
 
   const checkAnswer = (answer: string) => {
     if (answer === correctColor) {
